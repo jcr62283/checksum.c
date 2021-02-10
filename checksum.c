@@ -21,11 +21,13 @@ int main(int argc, char* argv[], char** envp) {
     byte checksum;
     byte complement;
 
-    byte num[] = read(1, sizeof(byte), 10);
-
-    for (int i = 0; i < count; i++)
+    byte num[count];
+    if (read(0, num, sizeof(byte)) > 0)
     {
-        fprintf(stdout, "%d ", num[i]);
+        for (int i = 0; i < count; i++)
+        {
+            fprintf(stdout, "%d ", num[i]);
+        }
     }
 
     checksum = 0;
