@@ -14,6 +14,8 @@
 #define max_int (255)
 #define byte (char)
 
+int read(int fildes, void* buf, size_t nbyte);
+
 int main(int argc, char* argv[], char** envp) {
 
     int count = 10;
@@ -21,10 +23,7 @@ int main(int argc, char* argv[], char** envp) {
     byte checksum = 0;
     byte complement = 0;
 
-    /* the following is the prototype for the read system call */
-    /* int read(int fildes, void *buf, size_t nbyte);  */
-
-    byte num[count];
+    char num[count];
     int readNum = read(0, &num, 10);
 
     if (readNum > 0)
