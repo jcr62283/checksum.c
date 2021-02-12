@@ -25,7 +25,7 @@ int main(int argc, char* argv[], char** envp) {
     /* int read(int fildes, void *buf, size_t nbyte);  */
 
     byte num[count];
-    int readNum = read(0, &num, sizeof(byte));
+    int readNum = read(0, &num, 10);
 
     if (readNum > 0)
     {
