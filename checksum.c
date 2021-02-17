@@ -1,12 +1,12 @@
-/********************************/
-/* Program Name:                */
-/* Author:                      */
-/* Date:                        */
-/********************************/
-/* Description:                 */
-/* Validation Checks:           */
-/* Enhancements:                */
-/********************************/
+/****************************************/
+/* Program Name: checksum.c             */
+/* Author: Jericho Raz                  */
+/* Date: 2/16/21                        */
+/****************************************/
+/* Description: checksum algorithm in C */
+/* Validation Checks:                   */
+/* Enhancements: None                   */
+/****************************************/
 
 #include "stdio.h"
 #include "stdlib.h"
