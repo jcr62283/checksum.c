@@ -24,6 +24,9 @@ int main(int argc, char* argv[], char** envp) {
     byte checksum;
     byte complement;
 
+    int quotient;
+    int remainder;
+
     byte header[count];
     int numRead = read(0, &header, 10);
 
@@ -38,13 +41,15 @@ int main(int argc, char* argv[], char** envp) {
             }
 
             sum += header[i];
+
+            if (sum > max_int)
+            {
+                sum -= max_int;
+            }
+
+            complement = max_int - sum;
         }
     }
-
-    int quo = sum / (max_int + 1);
-    int rem = sum % (max_int + 1);
-    sum = quo + rem;
-    complement = (byte)(max_int - sum);
     
     fprintf(stdout, "Stored Checksum: %d, Computed Checksum: %d\n", checksum, complement);
     if (checksum != complement) {
