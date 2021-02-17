@@ -12,27 +12,39 @@
 #include "stdlib.h"
 
 #define max_int (255)
-#define byte (char)
+#define byte unsigned char
 
 int read(int fildes, void* buf, size_t nbyte);
 
 int main(int argc, char* argv[], char** envp) {
 
     int count = 10;
+    int checksumpos = 5;
     int sum = 0;
-    byte checksum = 0;
-    byte complement = 0;
+    byte checksum;
+    byte complement;
 
-    char num[count];
-    int readNum = read(0, &num, 10);
+    byte header[count];
+    int numRead = read(0, &header, 10);
 
-    if (readNum > 0)
+    if (numRead > 0)
     {
         for (int i = 0; i < count; i++)
         {
-            fprintf(stdout, "%d ", num[i]);
+            if (i == checksumpos)
+            {
+                checksum = header[i];
+                header[i] = 0;
+            }
+
+            sum += header[i];
         }
     }
+
+    int quo = sum / (max_int + 1);
+    int rem = sum % (max_int + 1);
+    sum = quo + rem;
+    complement = (byte)(max_int - sum);
     
     fprintf(stdout, "Stored Checksum: %d, Computed Checksum: %d\n", checksum, complement);
     if (checksum != complement) {
